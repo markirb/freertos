@@ -53,7 +53,7 @@ conds:
       build_vars:
         ESP_IDF_SDKCONFIG_OPTS: >
           ${build_vars.ESP_IDF_SDKCONFIG_OPTS}
-          CONFIG_FREERTOS_TIMER_TASK_PRIORITY=2
+            CONFIG_FREERTOS_TIMER_TASK_PRIORITY=2
 
   - when: mos.platform == "esp32c3"
     apply:
@@ -61,6 +61,9 @@ conds:
         ESP_IDF_SDKCONFIG_OPTS: >
           ${build_vars.ESP_IDF_SDKCONFIG_OPTS}
           CONFIG_FREERTOS_TIMER_TASK_PRIORITY=2
+        ESP_IDF_EXTRA_COMPONENTS: >
+          ${build_vars.ESP_IDF_EXTRA_COMPONENTS}
+          esp_timer
 
   - when: mos.platform == "rs14100"
     apply:

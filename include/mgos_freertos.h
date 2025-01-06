@@ -19,9 +19,9 @@
 
 #include <stdbool.h>
 
-#include "FreeRTOS.h"
-#include "queue.h"
-#include "task.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/queue.h"
+#include "freertos/task.h"
 
 #include "mgos_init.h"
 #include "mongoose.h"

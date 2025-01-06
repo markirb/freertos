@@ -24,7 +24,7 @@
 
 // TODO(rojer): Multi-processor support.
 
-extern TaskHandle_t pxCurrentTCB;
+extern TaskHandle_t pxCurrentTCBs;
 
 void mgos_freertos_core_dump(void) {
   uint32_t unused_runtime;
@@ -45,18 +45,19 @@ void mgos_freertos_core_dump(void) {
         (unsigned long) ts->uxCurrentPriority,
         (unsigned long) ts->uxBasePriority, (unsigned long) ts->pxStackBase,
         (unsigned long) pxTopOfStack);
-    if (ts->xHandle != pxCurrentTCB) {
-      uint32_t buf[128];  // Surely this will be enough.
-      memset(buf, 0, sizeof(buf));
-      size_t regs_size =
-          mgos_freertos_extract_regs(pxTopOfStack, &buf, sizeof(buf));
-      if (regs_size > 0) {
-        mgos_cd_write_section("regs", buf, regs_size);
-      }
+    if (ts->xHandle != pxCurrentTCBs) {
+      // FIXME: function not defined?
+      //uint32_t buf[128];  // Surely this will be enough.
+      //memset(buf, 0, sizeof(buf));
+      //size_t regs_size =
+      //    mgos_freertos_extract_regs(pxTopOfStack, &buf, sizeof(buf));
+      //if (regs_size > 0) {
+      //  mgos_cd_write_section("regs", buf, regs_size);
+      //}
     } else {
       // For running task current backtrace will be used.
     }
     mgos_cd_puts("}");
   }
-  mgos_cd_printf("\r\n],\"cur\":%lu}", (unsigned long) pxCurrentTCB);
+  mgos_cd_printf("\r\n],\"cur\":%lu}", (unsigned long) pxCurrentTCBs);
 }

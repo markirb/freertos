@@ -19,10 +19,12 @@
 
 #include <stdio.h>
 
-#include "FreeRTOS.h"
-#include "queue.h"
-#include "semphr.h"
-#include "timers.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/queue.h"
+#include "freertos/semphr.h"
+#include "freertos/timers.h"
+
+#include "esp_timer.h"
 
 #include "common/cs_dbg.h"
 
